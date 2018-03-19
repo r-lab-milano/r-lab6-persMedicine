@@ -28,4 +28,19 @@ obesity_risk_get <- function(sex, bmi) {
 
 
 
+# rr_obesity_risk_get -----------------------------------------------------
+
+
+rr_obesity_risk_get <- function(sex, bmi) {
+	RA <- obesity_risk_get(sex, bmi)
+	RR_over <- case_when(
+		sex == "m" ~ RA$over/0.193,
+		TRUE ~ RA$over/0.149)
+	RR_ob <- RA$ob/0.08
+	RR <- list(over = RR_over, ob = RR_ob)
+	return(RR)
+}
+
+# p <- list(sex = "f", bmi = 27)
+# rr_obesity_risk_get(p$sex, p$bmi)
 
