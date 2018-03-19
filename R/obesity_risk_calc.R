@@ -41,6 +41,9 @@ rr_obesity_risk_get <- function(sex, bmi) {
 	return(RR)
 }
 
+
+
 # p <- list(sex = "f", bmi = 27)
 # rr_obesity_risk_get(p$sex, p$bmi)
 
+rr_obesity_risk_get("f", 24)

@@ -1,0 +1,77 @@
+---
+title: "Personalised medicine"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(persMedicine)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Obesity Absolute Risk
+
+```{r}
+p <- list(sex = "f", bmi = 26)
+RA <- obesity_risk_get(p$sex, p$bmi)
+
+gauge(round(RA$over, 1) , 0, 10,
+			gaugeSectors(
+				success = c(0, 0.8), warning = c(0.8, 2), danger = c(2, 10)
+))
+
+gauge(round(RA$ob, 1) , 0, 10,
+			gaugeSectors(
+				success = c(0, 0.8), warning = c(0.8, 2), danger = c(2, 10)
+))
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+
+### Obesity Relative Risk
+
+```{r}
+p <- list(sex = "f", bmi = 26)
+RR <- rr_obesity_risk_get(p$sex, p$bmi)
+
+gauge(round(RR$over, 1) , 0, 10,
+			gaugeSectors(
+				success = c(0, 0.8), warning = c(0.8, 2), danger = c(2, 10)
+))
+
+gauge(round(RR$ob, 1) , 0, 10,
+			gaugeSectors(
+				success = c(0, 0.8), warning = c(0.8, 2), danger = c(2, 10)
+))
+
+```
+
+
+
+
+
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
